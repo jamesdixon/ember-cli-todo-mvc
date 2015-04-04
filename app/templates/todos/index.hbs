@@ -1,0 +1,13 @@
+<ul id="todo-list">
+    {{#each todo in this itemController="todo"}}
+        <li {{bind-attr class="todo.model.isCompleted:completed todo.isEditing:editing"}}>
+            {{input type="checkbox" checked=todo.model.isCompleted class="toggle"}}
+            {{#if todo.isEditing}}
+                {{focus-input type="text" class="edit" value=todo.model.title escape-press="acceptChanges" focus-out="acceptChanges" insert-newline="acceptChanges"}}
+            {{else}}
+	            <label {{action "editTodo" on="doubleClick"}}>{{todo.model.title}}</label>
+                <button {{action "removeTodo"}} class="destroy"></button>
+            {{/if}}
+        </li>
+    {{/each}}
+</ul>
