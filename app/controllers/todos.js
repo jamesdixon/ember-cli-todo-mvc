@@ -4,7 +4,7 @@ export default Ember.ArrayController.extend({
 	actions: {
 		clearCompleted: function() {
 			var completed = this.filterBy('isCompleted', true);
-			completed.invoke(deleteRecord);
+			completed.invoke('deleteRecord');
 			completed.invoke('save');
 		},
 		createTodo: function(newTitle) {
